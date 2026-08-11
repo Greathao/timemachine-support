@@ -1,198 +1,288 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="scroll-smooth scroll-pt-20">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>拾光机 - 重要的日子，值得被记住</title>
-    <!-- 引入 Tailwind CSS 进行快速美化 -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <meta name="description" content="拾光机 2.0 技术支持、隐私政策与用户服务协议。">
+    <title>拾光机 - 技术支持与隐私</title>
     <style>
+        :root {
+            --paper: #faf9f7;
+            --surface: #ffffff;
+            --ink: #2f3336;
+            --body: #5e6870;
+            --quiet: #8c9398;
+            --line: #e5e1de;
+            --future: #557690;
+            --future-soft: #e8f0f5;
+            --past: #c47d55;
+            --past-soft: #f6ebe5;
+            --shadow: 0 10px 30px rgba(47, 51, 54, 0.06);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 84px; }
         body {
-            font-family: 'Noto Sans SC', sans-serif;
-            background-color: #0c0c0e;
-            color: #ffffff;
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+            font-size: 16px;
+            line-height: 1.75;
+            letter-spacing: 0;
+            -webkit-font-smoothing: antialiased;
         }
-        .gold-gradient {
-            background: linear-gradient(135deg, #FFDF73 0%, #D4AF37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        a { color: inherit; }
+        .wrap { width: min(100% - 40px, 960px); margin: 0 auto; }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(250, 249, 247, 0.92);
+            border-bottom: 1px solid rgba(229, 225, 222, 0.9);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
-        .bg-gold {
-            background: linear-gradient(135deg, #FFDF73 0%, #D4AF37 100%);
+        .nav-inner {
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+        .brand img { width: 34px; height: 34px; border-radius: 8px; }
+        .nav-links { display: flex; gap: 24px; color: var(--body); font-size: 14px; }
+        .nav-links a { text-decoration: none; }
+        .nav-links a:hover { color: var(--future); }
+
+        header { padding: 74px 0 64px; }
+        .eyebrow { color: var(--future); font-size: 14px; font-weight: 600; }
+        h1 {
+            max-width: 720px;
+            margin: 12px 0 18px;
+            font-size: clamp(38px, 7vw, 64px);
+            line-height: 1.14;
+            font-weight: 600;
         }
-        .legal-content h3 {
-            color: #FFDF73;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+        .lead { max-width: 650px; margin: 0; color: var(--body); font-size: 18px; }
+        .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+        .button {
+            min-height: 46px;
+            padding: 10px 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: var(--shadow);
         }
-        .legal-content p {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+        .button.primary { border-color: var(--future); background: var(--future); color: #fff; }
+
+        section { padding: 64px 0; border-top: 1px solid var(--line); }
+        .section-heading { margin: 0 0 8px; font-size: 28px; line-height: 1.3; font-weight: 600; }
+        .section-intro { max-width: 640px; margin: 0 0 30px; color: var(--body); }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .feature {
+            min-height: 190px;
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
         }
-        .legal-content ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            color: #9ca3af;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+        .feature-mark { width: 28px; height: 4px; margin-bottom: 28px; border-radius: 2px; background: var(--future); }
+        .feature:nth-child(2) .feature-mark { background: var(--past); }
+        .feature:nth-child(3) .feature-mark { background: var(--body); }
+        .feature h3 { margin: 0 0 8px; font-size: 17px; font-weight: 600; }
+        .feature p { margin: 0; color: var(--body); font-size: 14px; line-height: 1.65; }
+
+        .support-box {
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            border-radius: 8px;
+            background: var(--future-soft);
         }
-        .legal-content li {
-            margin-bottom: 0.5rem;
+        .support-box h3 { margin: 0 0 5px; font-size: 18px; font-weight: 600; }
+        .support-box p { margin: 0; color: var(--body); font-size: 14px; }
+        .mail { color: var(--future); font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+        .legal { max-width: 760px; }
+        .legal h2 { margin: 0 0 6px; font-size: 28px; font-weight: 600; }
+        .updated { margin: 0 0 32px; color: var(--quiet); font-size: 13px; }
+        .legal h3 { margin: 30px 0 8px; font-size: 17px; font-weight: 600; }
+        .legal p, .legal li { color: var(--body); font-size: 14px; }
+        .legal p { margin: 0 0 12px; }
+        .legal ul { margin: 8px 0 0; padding-left: 20px; }
+        .legal li { margin-bottom: 8px; }
+        .legal strong { color: var(--ink); font-weight: 600; }
+        .notice {
+            margin-top: 22px;
+            padding: 16px 18px;
+            border-left: 3px solid var(--past);
+            background: var(--past-soft);
+            color: var(--body);
+            font-size: 14px;
+        }
+
+        footer { padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--quiet); font-size: 12px; }
+        .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+        @media (max-width: 720px) {
+            .wrap { width: min(100% - 32px, 960px); }
+            .nav-links { gap: 14px; }
+            .nav-links a:first-child { display: none; }
+            header { padding: 52px 0 48px; }
+            .lead { font-size: 16px; }
+            section { padding: 50px 0; }
+            .features { grid-template-columns: 1fr; }
+            .feature { min-height: 0; }
+            .support-box { align-items: flex-start; flex-direction: column; }
+            .footer-inner { flex-direction: column; gap: 6px; }
         }
     </style>
 </head>
-<body class="antialiased">
-
-    <!-- 导航栏 -->
-    <nav class="fixed w-full z-50 px-6 py-4 bg-[#0c0c0e]/80 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <!-- 嵌入你提供的 Logo 图片 -->
-                <img src="logo.png" alt="拾光机 Logo" class="w-10 h-10 rounded-xl shadow-lg transform rotate-[-5deg]" onerror="this.innerHTML='<i class=\'fa-solid fa-paper-plane\'></i>'; this.className='w-10 h-10 bg-gold rounded-xl flex items-center justify-center text-black';">
-                <span class="text-xl font-black tracking-tighter">拾光机</span>
-            </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#features" class="hover:text-white transition">功能特性</a>
-                <a href="#support" class="hover:text-white transition">技术支持</a>
-                <a href="#privacy" class="hover:text-white transition">隐私政策</a>
-                <a href="#terms" class="hover:text-white transition">服务协议</a>
+<body>
+    <nav aria-label="主导航">
+        <div class="wrap nav-inner">
+            <div class="brand"><img src="logo.png" alt="拾光机图标"><span>拾光机</span></div>
+            <div class="nav-links">
+                <a href="#features">2.0 功能</a>
+                <a href="#support">技术支持</a>
+                <a href="#privacy">隐私政策</a>
+                <a href="#terms">服务协议</a>
             </div>
         </div>
     </nav>
 
-    <!-- 主视觉区 -->
-    <section class="pt-32 pb-20 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-                重要的日子 <br> <span class="gold-gradient">值得被记住</span>
-            </h1>
-            <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-                生命不是你活过的日子，而是你记住的日子。<br>拾光机，为您提供极具设计感的时间管理与桌面组件工具。
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <!-- 使用你提供的真实 Apple ID 链接 -->
-                <a href="https://apps.apple.com/app/id6747690375" target="_blank" class="bg-white text-black px-8 py-4 rounded-full font-bold flex items-center space-x-2 hover:bg-gray-200 transition shadow-xl">
-                    <i class="fa-brands fa-apple text-xl"></i>
-                    <span>App Store 下载</span>
-                </a>
-                <a href="#support" class="border border-white/20 px-8 py-4 rounded-full font-bold hover:bg-white/5 transition">
-                    获取技术支持
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 功能特性 -->
-    <section id="features" class="py-20 px-6 bg-[#111114]">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="glass-card p-8 rounded-3xl">
-                    <i class="fa-solid fa-layer-group text-3xl mb-6 text-[#D4AF37]"></i>
-                    <h3 class="text-xl font-bold mb-4">高定桌面组件</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">提供流光焦点、岁月长河、专属回忆等全系列组件。赋予桌面杂志般的质感。</p>
-                </div>
-                <div class="glass-card p-8 rounded-3xl">
-                    <i class="fa-solid fa-border-all text-3xl mb-6 text-[#D4AF37]"></i>
-                    <h3 class="text-xl font-bold mb-4">人生 900 格</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">将生命浓缩进一张表格。直观感受时间的流逝与生命的厚度，提醒您珍惜当下。</p>
-                </div>
-                <div class="glass-card p-8 rounded-3xl">
-                    <i class="fa-solid fa-calendar-check text-3xl mb-6 text-[#D4AF37]"></i>
-                    <h3 class="text-xl font-bold mb-4">专业农历引擎</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">完美支持中国农历，精准处理复杂闰月与周期重复。不错过任何一个传统节日。</p>
+    <main>
+        <header>
+            <div class="wrap">
+                <div class="eyebrow">拾光机 2.0</div>
+                <h1>对未来有所期待，<br>对过去有所怀念。</h1>
+                <p class="lead">记录重要的人与日子，也把走过的时间慢慢收进回忆。没有催促，只有在合适的时候，轻轻提醒你想起。</p>
+                <div class="actions">
+                    <a class="button primary" href="https://apps.apple.com/app/id6747690375" target="_blank" rel="noopener">在 App Store 查看</a>
+                    <a class="button" href="mailto:lhjyxxzy@gmail.com">联系开发者</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- 技术支持区 -->
-    <section id="support" class="py-20 px-6">
-        <div class="max-w-3xl mx-auto text-center glass-card p-10 rounded-[40px]">
-            <h2 class="text-3xl font-black mb-6 text-[#FFDF73]">技术支持与反馈</h2>
-            <p class="text-gray-400 mb-10">在使用“拾光机”过程中遇到任何问题或建议，请随时联系开发者。</p>
-            <div class="flex items-center justify-center space-x-4 bg-white/5 px-6 py-4 rounded-2xl border border-white/10 mx-auto max-w-md">
-                <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center">
-                    <i class="fa-solid fa-envelope text-[#FFDF73]"></i>
-                </div>
-                <div class="text-left">
-                    <p class="text-xs text-gray-500 uppercase font-bold tracking-widest">官方联系邮箱</p>
-                    <a href="mailto:lhjyxxzy@gmail.com" class="font-bold hover:text-[#FFDF73] transition">lhjyxxzy@gmail.com</a>
+        <section id="features">
+            <div class="wrap">
+                <h2 class="section-heading">2.0 的日子与回忆</h2>
+                <p class="section-intro">日子面向未来，回忆安放过去。每项功能都围绕真实发生的时间展开。</p>
+                <div class="features">
+                    <article class="feature">
+                        <div class="feature-mark"></div>
+                        <h3>重要日子</h3>
+                        <p>记录生日、纪念日、约定与人生时刻，支持公历、农历、重复方式、多节点提醒和准备清单。</p>
+                    </article>
+                    <article class="feature">
+                        <div class="feature-mark"></div>
+                        <h3>回忆时间轴</h3>
+                        <p>按真实发生日期阅读文字与照片。同一个纪念日，可以留下不同年份各自的记录。</p>
+                    </article>
+                    <article class="feature">
+                        <div class="feature-mark"></div>
+                        <h3>桌面小组件</h3>
+                        <p>在桌面查看最重要的日子、接下来的安排和最近一段回忆，跨天后自动更新日期。</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 隐私政策 -->
-    <section id="privacy" class="py-20 px-6 border-t border-white/5">
-        <div class="max-w-4xl mx-auto bg-white/5 p-8 md:p-12 rounded-3xl legal-content">
-            <h2 class="text-3xl font-black mb-8 gold-gradient text-center">隐私政策 (Privacy Policy)</h2>
-            <p class="text-center italic mb-8">最新更新日期：2026年3月</p>
-            
-            <h3>1. 信息收集与使用原则</h3>
-            <p>“拾光机”由独立开发者提供，我们严格遵循“数据最小化”原则。除应用核心功能所必需的系统权限外，我们<strong>不主动收集、不上传、不分析</strong>您的任何个人识别信息。</p>
-            
-            <h3>2. 核心数据存储（iCloud 与本地）</h3>
-            <p><strong>纪元与倒数日数据：</strong>默认情况下，您的所有记录仅存储在您设备的本地存储中。当您开启“iCloud 云端同步”功能后，数据将通过苹果官方的高级加密标准存储于您个人的 Apple ID 私有云空间内。开发者及任何第三方均无法访问您的数据。</p>
-            <p><strong>隐私锁：</strong>应用的 FaceID / TouchID 解锁功能仅通过 iOS 系统原生接口处理本地验证，本应用无法获取也绝不会上传您的生物特征信息。</p>
-            
-            <h3>3. 系统权限说明</h3>
-            <ul>
-                <li><strong>通知权限：</strong>仅用于在您设置的重要日子到达时，在本地触发推送提醒。</li>
-                <li><strong>照片与相册：</strong>仅在您选择自定义图片作为组件卡片背景时，在本地读取对应图片。</li>
-            </ul>
-            
-            <h3>4. 数据共享与安全</h3>
-            <p>我们绝不将您的信息出售或共享给任何第三方机构。您的数据资产完全属于您自己。</p>
-        </div>
-    </section>
+        <section id="support">
+            <div class="wrap">
+                <h2 class="section-heading">技术支持</h2>
+                <p class="section-intro">遇到数据、同步、提醒、购买或小组件问题，请直接联系开发者。反馈时可附上 iPhone 型号、iOS 版本和 App 版本，请勿发送私密记录或原始照片。</p>
+                <div class="support-box">
+                    <div>
+                        <h3>我们会认真阅读每一封邮件</h3>
+                        <p>通常请保留问题发生时的页面截图，便于更快定位。</p>
+                    </div>
+                    <a class="mail" href="mailto:lhjyxxzy@gmail.com">lhjyxxzy@gmail.com</a>
+                </div>
+            </div>
+        </section>
 
-    <!-- 服务协议 -->
-    <section id="terms" class="py-20 px-6 border-t border-white/5">
-        <div class="max-w-4xl mx-auto bg-white/5 p-8 md:p-12 rounded-3xl legal-content">
-            <h2 class="text-3xl font-black mb-8 gold-gradient text-center">用户服务协议 (Terms of Service)</h2>
-            
-            <h3>1. 服务协议的确认</h3>
-            <p>一旦您下载、安装并开始使用“拾光机”App，即视为您已阅读并同意接受本协议所有条款。</p>
-            
-            <h3>2. 知识产权</h3>
-            <p>“拾光机”应用内的所有设计元素（包括但不限于 UI 界面、图标、桌面小组件排版、代码逻辑）均受知识产权法律保护，属于开发者所有。未经明确书面许可，禁止任何形式的抄袭、反向工程或商业性二次分发。</p>
-            
-            <h3>3. 订阅服务与自动续费规则（重要）</h3>
-            <p>本应用提供“拾光机 PRO”连续包月、连续包年等自动续订服务，以及终身买断服务。当您选择订阅服务时，请仔细阅读以下规则：</p>
-            <ul>
-                <li><strong>确认购买：</strong>当您确认购买并支付后，相关费用将通过您的 Apple ID (iTunes 账户) 扣除。</li>
-                <li><strong>自动续订：</strong>苹果 iTunes 账户会在到期前 24 小时内扣费，扣费成功后订阅周期顺延一个订阅周期。</li>
-                <li><strong>取消续订：</strong>如需取消续订，请在当前订阅周期到期前，至少提前 24 小时手动在您的苹果设备中操作取消。操作路径：前往“设置” -> “Apple ID” -> “订阅”，选择“拾光机 PRO”取消订阅即可。如果您未在至少 24 小时前取消，订阅将被视为有效并自动续费。</li>
-                <li><strong>免费试用：</strong>如果您在免费试用期（如提供）结束前购买了相关订阅，未使用的试用期将自动失效。</li>
-            </ul>
-            
-            <h3>4. 免责声明</h3>
-            <p>开发者致力于保障应用的稳定运行，但不对因用户设备硬件故障、iOS 系统升级异常、Apple ID 异常或不可抗力导致的数据丢失承担法律及连带赔偿责任。建议您定期开启 iCloud 备份以保护重要数据。</p>
-        </div>
-    </section>
+        <section id="privacy">
+            <div class="wrap legal">
+                <h2>隐私政策</h2>
+                <p class="updated">最新更新日期：2026 年 8 月 11 日</p>
 
-    <!-- 页脚 -->
-    <footer class="py-20 px-6 border-t border-white/5 text-center">
-        <div class="max-w-6xl mx-auto">
-            <p class="text-gray-500 text-xs mb-4">
-                Apple ID: 6747690375 | Support: <a href="mailto:lhjyxxzy@gmail.com" class="hover:text-white transition">lhjyxxzy@gmail.com</a>
-            </p>
-            <p class="text-gray-600 text-xs">
-                Copyright © 2026 Hao Liu. All Rights Reserved.
-            </p>
+                <h3>1. 我们如何对待你的数据</h3>
+                <p>拾光机由独立开发者提供，不包含广告、第三方分析 SDK 或开发者账号系统。开发者不会建立用户画像，也不会出售你的记录。</p>
+
+                <h3>2. 本机与 iCloud 存储</h3>
+                <p><strong>本机数据：</strong>你创建的重要日子、准备清单、文字与照片首先保存在 App 的本机存储中。</p>
+                <p><strong>iCloud 同步：</strong>在设备已登录 Apple ID、启用 iCloud 且系统服务可用时，拾光机会使用你的个人 iCloud 空间同步记录与照片。相关内容由 Apple 的 iCloud 基础设施处理，开发者没有用于读取这些私人内容的服务器或后台。</p>
+                <p>当 iCloud 暂时不可用时，App 会继续保留本机数据，并在界面中提供同步状态反馈。跨设备同步可能受到网络、Apple ID 状态和 iCloud 可用空间影响。</p>
+
+                <h3>3. 系统权限</h3>
+                <ul>
+                    <li><strong>通知：</strong>仅在你主动开启某个日子的提醒时申请，用于在设备本地安排通知。</li>
+                    <li><strong>照片：</strong>仅在你主动添加回忆照片，或将分享图片保存到相册时申请。</li>
+                    <li><strong>Face ID / Touch ID：</strong>仅用于可选的应用锁。生物特征验证由 iOS 完成，拾光机无法读取或保存你的生物特征信息。</li>
+                </ul>
+
+                <h3>4. App 内购买</h3>
+                <p>拾光机 Pro 由 Apple App Store 处理购买。开发者不会获得你的银行卡、支付账号等付款信息。App 会在设备上保存是否已解锁 Pro 的状态，并可通过 Apple 提供的恢复购买能力重新确认权益。</p>
+
+                <h3>5. 删除与保留</h3>
+                <p>你可以在 App 内删除单条记录或照片。删除操作会移除对应的本机内容，并可能通过 iCloud 同步到使用同一 Apple ID 的其他设备。卸载 App 会移除本机内容；已同步到个人 iCloud 的内容仍受 Apple ID 与 iCloud 状态管理。</p>
+
+                <h3>6. 联系方式与政策更新</h3>
+                <p>如对隐私或数据处理有疑问，请发送邮件至 <a href="mailto:lhjyxxzy@gmail.com">lhjyxxzy@gmail.com</a>。政策更新会在本页面标明日期；涉及数据处理方式的重大变化会随 App 更新说明告知。</p>
+            </div>
+        </section>
+
+        <section id="terms">
+            <div class="wrap legal">
+                <h2>用户服务协议</h2>
+                <p class="updated">最新更新日期：2026 年 8 月 11 日</p>
+
+                <h3>1. 服务说明</h3>
+                <p>拾光机用于记录、提醒与整理个人时间信息，不应作为医疗、安全、法律或其他高风险事项的唯一提醒方式。使用 App 即表示你同意本协议与隐私政策。</p>
+
+                <h3>2. 免费使用与拾光机 Pro</h3>
+                <p>免费版可以完整记录最多 5 个重要日子。达到数量后，已有日子、回忆和照片仍可查看与管理，不会因为未购买而被删除或锁住。</p>
+                <p><strong>拾光机 Pro 永久版</strong>是通过 Apple App Store 提供的非消耗型 App 内购买项目。一次购买后可解锁无限日子；它不是订阅，不会自动续费，也不会产生周期性扣款。</p>
+                <ul>
+                    <li>实际价格和币种以购买页面中 Apple App Store 返回的信息为准。</li>
+                    <li>购买将由当前 Apple ID 确认并扣款。</li>
+                    <li>可使用同一 Apple ID 通过“恢复购买”重新获得已购买权益。</li>
+                    <li>退款申请、付款问题和购买记录由 Apple 按其适用规则处理。</li>
+                </ul>
+
+                <h3>3. 数据与设备责任</h3>
+                <p>开发者会持续改进数据保存与同步能力。为降低风险，请保持有效的设备备份和可用的 iCloud 空间，不要将拾光机作为任何重要信息的唯一副本。</p>
+                <div class="notice">我们不会因为用户未购买 Pro 而删除已有数据。删除记录、卸载 App、关闭或退出 iCloud 前，请确认重要内容已有妥善备份。</div>
+
+                <h3>4. 知识产权与合理使用</h3>
+                <p>拾光机的软件、界面、品牌和相关内容受适用法律保护。你保留自己写入文字和照片的权利，并应确保所添加或分享的内容拥有合法使用权。</p>
+
+                <h3>5. 服务变更与联系</h3>
+                <p>功能可能随系统能力和 App 版本调整。对于影响购买权益或数据处理的重要变化，开发者会提供明确说明。相关问题请联系 <a href="mailto:lhjyxxzy@gmail.com">lhjyxxzy@gmail.com</a>。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap footer-inner">
+            <span>Apple ID：6747690375</span>
+            <span>Copyright &copy; 2026 Hao Liu. All rights reserved.</span>
         </div>
     </footer>
-
 </body>
 </html>
