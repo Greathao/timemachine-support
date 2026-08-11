@@ -85,6 +85,7 @@
             box-shadow: var(--shadow);
         }
         .button.primary { border-color: var(--future); background: var(--future); color: #fff; }
+        .button.disabled { color: var(--quiet); background: var(--paper); cursor: default; }
 
         section { padding: 64px 0; border-top: 1px solid var(--line); }
         .section-heading { margin: 0 0 8px; font-size: 28px; line-height: 1.3; font-weight: 600; }
@@ -172,7 +173,7 @@
                 <h1>对未来有所期待，<br>对过去有所怀念。</h1>
                 <p class="lead">记录重要的人与日子，也把走过的时间慢慢收进回忆。没有催促，只有在合适的时候，轻轻提醒你想起。</p>
                 <div class="actions">
-                    <a class="button primary" href="https://apps.apple.com/app/id6747690375" target="_blank" rel="noopener">在 App Store 查看</a>
+                    <span class="button disabled" aria-label="拾光机 2.0 即将上线 App Store">即将上线 App Store</span>
                     <a class="button" href="mailto:lhjyxxzy@gmail.com">联系开发者</a>
                 </div>
             </div>
